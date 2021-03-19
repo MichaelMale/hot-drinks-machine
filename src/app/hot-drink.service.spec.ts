@@ -28,7 +28,7 @@ describe('HotDrinkService', () => {
         expect(res).toBeTruthy();
       });
 
-      httpMock.expectOne(request => request.url.endsWith('get-drink/1')
+      httpMock.expectOne(request => request.url.endsWith('get-drink/0')
       && request.method === 'GET').flush(mockResponse);
 
     }));
