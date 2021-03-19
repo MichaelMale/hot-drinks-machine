@@ -1,16 +1,31 @@
 <div class="col-12">
   <h1>Hot Drinks Machine</h1>
 
-  <div class="col-6">
+  <div class="col-6 no-gutters">
     <div class="row">What drink do you want?</div>
     <div class="btn-group row" role="group" aria-label="Drink selector">
-      <button type="button" class="btn btn-secondary">Lemon Tea</button>
-      <button type="button" class="btn btn-secondary">Coffee</button>
-      <button type="button" class="btn btn-secondary">Chocolate</button>
+      <button type="button" class="btn btn-secondary" (click)="makeDrink(drinkType.LemonTea)">Lemon Tea</button>
+      <button type="button" class="btn btn-secondary" (click)="makeDrink(drinkType.Coffee)">Coffee</button>
+      <button type="button" class="btn btn-secondary" (click)="makeDrink(drinkType.Chocolate)">Chocolate</button>
     </div>
-    <div class="row">Making Lemon Tea...</div>
-    <div class="row">
-      <img style="height: 200px; width: 200px;" src="https://www.whiskaffair.com/wp-content/uploads/2020/03/Lemon-Tea-4.jpg">
-    </div>
+
+    <ng-container *ngIf="drink">
+      <div class="card drink">
+        <img class="card img-top drink-image" src="../assets/images/{{drink.image}}">
+        <div class="card-body">
+          <h5 class="card-title">{{ drink.name }}</h5>
+          <p class="card-text">
+            <ol>
+              <li *ngFor="let step of drink.steps">
+                {{ step }}
+              </li>
+            </ol>
+            <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </ng-container>
+
+
+
   </div>
 </div>
